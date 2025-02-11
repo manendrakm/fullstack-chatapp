@@ -10,11 +10,15 @@ spec:
       app: frontend
   template:
     metadata:
+      name: frontend-pod
       labels:
         app: frontend
     spec:
       containers:
-      - name: frontend
+      - name: chatapp-frontend
         image: manendrakmrdocker/chatapp-frontend:latest 
         ports:
         - containerPort: 80
+        env:
+        - name: NODE_ENV
+          value: "production"
