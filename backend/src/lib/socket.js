@@ -7,7 +7,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://chat.ex2india.dev:5173"],
+    origin: ["http://localhost:5173"],
   },
 });
 
