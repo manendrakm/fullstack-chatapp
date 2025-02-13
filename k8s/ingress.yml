@@ -2,8 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
  name: chat-app-ingress
+ namespace: chat-app  
  annotations:
-   cert-manager.io/cluster-issuer: lets-encrypt
+   certi-manager.io/cluster-issuer: lets-encrypt
+     #nginx.ingress.kubernetes.io/rewrite-target: /  
 spec:
  tls:
  - hosts:
@@ -20,3 +22,10 @@ spec:
              number: 80
        path: /
        pathType: Prefix
+     - backend:
+         service:
+           name: backend
+           port:
+             number: 5001
+       path: /api
+       pathType: Prefix    

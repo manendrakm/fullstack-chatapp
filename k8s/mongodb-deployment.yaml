@@ -23,7 +23,10 @@ spec:
         - name: MONGO_INITDB_ROOT_USERNAME
           value: mongoadmin
         - name: MONGO_INITDB_ROOT_PASSWORD
-          value: secret
+          valueFrom:
+            secretKeyRef:
+              name: backend-secrets
+              key: mongo_password  
       volumes:
       - name: mongo-data
         persistentVolumeClaim:
